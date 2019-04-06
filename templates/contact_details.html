@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+Welcome back, {{ user_contact.first_name }} {{ user_contact.last_name }}
+    {% endif %}
+{% endblock %}

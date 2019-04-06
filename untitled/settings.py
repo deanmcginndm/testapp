@@ -54,7 +54,7 @@ ROOT_URLCONF = 'untitled.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2'
+        'BACKEND': 'django.template.backends.django.DjangoTemplates'
         ,
         'DIRS': [os.path.join(BASE_DIR, 'templates')]
         ,
