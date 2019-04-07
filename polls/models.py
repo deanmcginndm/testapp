@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 import datetime
 from django.contrib.auth.models import User
+from django_extensions.db.models import AutoSlugField
 
 # Create your models here.
 
@@ -30,6 +31,10 @@ class Contact(models.Model):
     first_name = models.CharField(max_length=56)
     last_name = models.CharField(max_length=256)
     contact_user_obj = models.ManyToManyField(User)
+    slug = AutoSlugField(populate_from=['first_name', 'last_name'])
 
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    def get_queryset(self):
+        return User.objects.get(id=self.id)

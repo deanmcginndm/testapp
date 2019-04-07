@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% if user.is_authenticated %}
-Welcome back, {{ user_contact.first_name }} {{ user_contact.last_name }}
+    {% if user.is_authenticated and user.pk == user_contact.get_queryset.id %}
+        Welcome back, <br>
+        {{ user_contact.first_name }} <br>
+        {{ user_contact.get_queryset.email }} <br>
+        {{ user.username }}
+    {% else %}
+        {{ user_contact.first_name }}
+        <br>
+        {{ user_contact.last_name }}
+        <br>
     {% endif %}
 {% endblock %}
